@@ -12,7 +12,8 @@ const Home = ({ members }: Props) => (
   <div className="flex flex-col items-center justify-center min-h-screen py-2">
     <Head>
       <title>Exhale Creativity - Member Directory</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="alternate icon" type="image/png" href="/favicon.png" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     </Head>
 
     <MemberGrid members={members} />
@@ -24,9 +25,6 @@ export const getStaticProps: GetStaticProps = async () => {
   // Don't forget to include the respective types for any props passed into
   // the component.
   const members: Member[] = sampleMemberData
-
-  console.log('members', members)
-
   return { props: { members } }
 }
 
