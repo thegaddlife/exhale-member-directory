@@ -10,15 +10,9 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
       <Head>
         <link rel="alternate icon" type="image/png" href="/favicon.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="robots" content="noindex, nofollow" />
         {isProd && (
           <>
-            <meta name="robots" content="noindex, nofollow" />
-            <noscript
-              dangerouslySetInnerHTML={{
-                __html: `<meta http-equiv='refresh' content='0; url=https://www.memberspace.com/enable-javascript'`,
-              }}
-            ></noscript>
-
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -46,6 +40,11 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
           </>
         )}
       </Head>
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<meta http-equiv='refresh' content='0; url=https://www.memberspace.com/enable-javascript'`,
+        }}
+      ></noscript>
       <div id="__memberspace_modal_protected_page"></div>
       <header>
         <h1>Exhale Members</h1>
