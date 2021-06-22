@@ -1,12 +1,20 @@
-// to import
-// import { Member } from 'path/to/interfaces';
+import { Badge } from './Badge'
+import { Submission } from './Submission'
 
-export type Member = {
-  id: number
-  name: string
-  title: string
-  role: string
-  email: string
-  telephone: string
-  imageUrl: string
+export interface Member {
+  emailAddress?: string
+  memberId?: string
+  photoUrl?: string
+  displayName?: string
+  joined?: string
+  joinedString?: string
+  submission?: Submission
+  lat?: number | null
+  lng?: number | null
+  latLng?: string
+  isTeamMember?: boolean
+  isOriginalMember?: boolean
+  anniversaryCount?: number
+  badges?: Badge[]
+  locationCompareString?: string
 }
