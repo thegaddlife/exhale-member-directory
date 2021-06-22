@@ -15,6 +15,19 @@ const Home = ({ allMembers }: Props) => {
         <title>Exhale Creativity - Member Directory</title>
         <link rel="alternate icon" type="image/png" href="/favicon.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            var MemberSpace = window.MemberSpace || {subdomain: 'exhalecreativity', domain: 'members.exhalecreativity.com'};
+            (function(d){
+            var s = d.createElement('script');
+            s.src = 'https://cdn.memberspace.com/scripts/widgets.js';
+            var e = d.getElementsByTagName('script')[0];
+            e.parentNode.insertBefore(s,e);
+            }(document));  
+                  `,
+          }}
+        ></script>
       </Head>
 
       <MemberGrid members={allMembers} />
