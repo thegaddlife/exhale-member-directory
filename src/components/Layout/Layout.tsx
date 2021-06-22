@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -37,7 +38,6 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
                 __html: `#__memberspace_modal_protected_page {position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:2147483646;}`,
               }}
             ></style>
-            <div id="__memberspace_modal_protected_page"></div>
             <script
               dangerouslySetInnerHTML={{
                 __html: `if(window.top.location.href.search('.squarespace.com/config') > 0) {document.getElementById("__memberspace_modal_protected_page").style.display = "none";}`,
@@ -46,6 +46,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
           </>
         )}
       </Head>
+      <div id="__memberspace_modal_protected_page"></div>
       <header>
         <h1>Exhale Members</h1>
       </header>
