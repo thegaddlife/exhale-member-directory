@@ -3,6 +3,10 @@ import React from 'react'
 import Link from 'next/link'
 import Layout from '../components/Layout/Layout'
 
+export const config = {
+  unstable_runtimeJS: false,
+}
+
 export default function Home() {
   return (
     <Layout home>

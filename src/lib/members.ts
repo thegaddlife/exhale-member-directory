@@ -6,7 +6,22 @@ const getAllMembers = async (): Promise<Member[]> => {
   //const response = await fetch(`${process.env.MEMBERS_API_ENDPOINT}/api/GetMembers`)
   //const memberGroups = await response.json()
 
-  const members = memberGroups.map((group) => group.members).flat()
+  const members = memberGroups
+    .map((group) => group.members)
+    .flat()
+    .sort(function (a, b) {
+      const nameA = a.displayName.toUpperCase() // ignore upper and lowercase
+      const nameB = b.displayName.toUpperCase() // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1
+      }
+      if (nameA > nameB) {
+        return 1
+      }
+
+      // names must be equal
+      return 0
+    })
 
   return members
 }
