@@ -1,5 +1,5 @@
-import MemberCard from './MemberCard/MemberCard'
-import { Member } from '../interfaces/Member'
+import MemberCard from '../MemberCard/MemberCard'
+import { Member } from '../../interfaces/Member'
 
 type Props = {
   members: Member[]
