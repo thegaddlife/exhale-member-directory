@@ -5,3 +5,4 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp
+export const isProd = process.env.NODE_ENV === `production`

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "kill": "sudo lsof -t -i tcp:3000 | xargs kill -9"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.1",

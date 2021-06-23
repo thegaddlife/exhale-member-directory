@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Link from 'next/link'
-import Layout from '../components/Layout/Layout'
+import Layout from '@/components/Layout/Layout'
 
 export const config = {
   unstable_runtimeJS: false,

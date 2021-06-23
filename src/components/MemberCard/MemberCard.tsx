@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { MailIcon, PhoneIcon } from '@heroicons/react/solid'
-import { Member } from '../../interfaces/Member'
+import { Member } from '@/interfaces/Member'
 
 type Props = {
   member: Member

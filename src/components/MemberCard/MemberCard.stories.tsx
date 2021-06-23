@@ -1,7 +1,7 @@
 import React from 'react'
-import { Color } from '../../interfaces/Color'
-import { Icon } from '../../interfaces/Icon'
-import { Member } from '../../interfaces/Member'
+import { Color } from '@/interfaces/Color'
+import { Icon } from '@/interfaces/Icon'
+import { Member } from '@/interfaces/Member'
 import MemberCard from './MemberCard'
 
 export default {

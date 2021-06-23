@@ -1,8 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-
-const isProd = process.env.NODE_ENV === `production`
+import { isProd } from '@/pages/_app'
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
