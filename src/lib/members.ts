@@ -2,13 +2,18 @@ import membersJson from './members.json'
 import { postData } from './post'
 import { Member } from '@/interfaces/Member'
 import { MemberGroup } from '@/interfaces/MemberGroup'
-import { isProd } from '@/pages/_app'
+import { __prod__ } from 'src/constants'
 
 const getAllMembers = async (): Promise<Member[]> => {
   let memberGroups = []
-  if (isProd) {
+  if (__prod__) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-functions-key': process.env.FunctionKey,
+    }
+
     // get members by calling sync on the azure serverless function
-    postData(`${process.env.MEMBERS_API_ENDPOINT}/api/SyncMembers`)
+    postData(`${process.env.MEMBERS_API_ENDPOINT}/api/SyncMembers`, headers)
       .then((memberGroups) => {
         console.log(`${memberGroups.length} member groups retrieved`)
       })
