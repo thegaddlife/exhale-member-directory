@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { isProd } from '@/pages/_app'
+import { __prod__ } from 'src/constants'
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         <link rel="alternate icon" type="image/png" href="/favicon.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="robots" content="noindex, nofollow" />
-        {isProd && (
+        {__prod__ && (
           <>
             <script
               dangerouslySetInnerHTML={{
