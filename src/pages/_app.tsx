@@ -1,7 +1,6 @@
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
-  console.log(process.env.NODE_ENV)
+function MyApp({ Component, pageProps }): JSX.Element {
   return <Component {...pageProps} />
 }
 

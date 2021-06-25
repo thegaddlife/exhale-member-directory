@@ -4,9 +4,7 @@ import MemberGrid from '@/components/MembersGrid/MembersGrid'
 import { Member } from '@/interfaces/Member'
 import Layout from '@/components/Layout/Layout'
 import { GetStaticPropsResult } from 'next'
-import { _private } from '@/lib/members'
-
-const { __getAllMembers } = _private as any
+import getAllMembers from '@/lib/members'
 
 type DirectoryProps = {
   allMembers: Member[]
@@ -31,22 +29,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<DirectoryPr
   // Don't forget to include the respective types for any props passed into
   // the component.
 
-  const allMembers: Member[] = await __getAllMembers()
-    .map((group) => group.members)
-    .flat()
-    .sort(function (a, b) {
-      const nameA = a.displayName.toUpperCase() // ignore upper and lowercase
-      const nameB = b.displayName.toUpperCase() // ignore upper and lowercase
-      if (nameA < nameB) {
-        return -1
-      }
-      if (nameA > nameB) {
-        return 1
-      }
-
-      // names must be equal
-      return 0
-    })
+  const allMembers: Member[] = await getAllMembers()
 
   return { props: { allMembers } }
 }
