@@ -1,10 +1,12 @@
 import { postData } from './post'
 import { Member } from '@/interfaces/Member'
 import { __prod__ } from 'src/constants'
-import { readFile } from 'fs'
+import fs from 'fs'
+import path from 'path'
+import { MemberGroup } from '@/interfaces/MemberGroup'
 
 const getAllMembers = async (): Promise<Member[]> => {
-  let memberGroups = []
+  let memberGroups: MemberGroup[] = []
   if (__prod__) {
     // get members by calling sync on the azure serverless function
     postData(`${process.env.MEMBERS_API_ENDPOINT}/api/SyncMembers`)
@@ -15,14 +17,9 @@ const getAllMembers = async (): Promise<Member[]> => {
         console.error('Error during fetch:', error)
       })
   } else {
-    // otherwise in dev grab members from our sample file(s)
-    readFile('/members.json', 'utf8', (err, data) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      memberGroups = JSON.parse(JSON.stringify(data))
-    })
+    const pathToJson = path.join(process.cwd(), 'src/lib/members.json')
+    const data = JSON.parse(fs.readFileSync(pathToJson, 'utf-8'))
+    memberGroups = data
   }
 
   // for default return, sort flattened member list by name

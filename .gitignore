@@ -34,4 +34,4 @@ yarn-error.log*
 .vercel
 
 # custom rules
-/src/lib/members.json
+/public/members.json
