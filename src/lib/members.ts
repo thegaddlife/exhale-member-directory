@@ -1,8 +1,7 @@
-import membersJson from './members.json'
 import { postData } from './post'
 import { Member } from '@/interfaces/Member'
-import { MemberGroup } from '@/interfaces/MemberGroup'
 import { __prod__ } from 'src/constants'
+import { getAllLocalMembers } from './membersLocal'
 
 const getAllMembers = async (): Promise<Member[]> => {
   let memberGroups = []
@@ -13,7 +12,7 @@ const getAllMembers = async (): Promise<Member[]> => {
     }
 
     // get members by calling sync on the azure serverless function
-    postData(`${process.env.MEMBERS_API_ENDPOINT}/api/SyncMembers`, headers)
+    await postData(`${process.env.MEMBERS_API_ENDPOINT}/api/SyncMembers`, headers)
       .then((memberGroups) => {
         console.log(`${memberGroups.length} member groups retrieved`)
       })
@@ -21,8 +20,7 @@ const getAllMembers = async (): Promise<Member[]> => {
         console.error('Error during fetch:', error)
       })
   } else {
-    // otherwise in dev grab members from our sample file(s)
-    memberGroups = memberGroupsSample
+    memberGroups = getAllLocalMembers()
   }
 
   // for default return, sort flattened member list by name
@@ -47,4 +45,3 @@ const getAllMembers = async (): Promise<Member[]> => {
 export default getAllMembers
 
 //comment these line out when doing production build
-const memberGroupsSample: MemberGroup[] = JSON.parse(JSON.stringify(membersJson))

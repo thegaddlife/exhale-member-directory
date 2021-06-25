@@ -3,7 +3,7 @@ export async function postData(
   url = '',
   headers = { 'Content-Type': 'application/json' },
   data = {}
-) {
+): Promise<string> {
   // Default options are marked with *
   const response = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
