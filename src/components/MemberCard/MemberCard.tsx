@@ -11,23 +11,21 @@ const MemberCard = ({ member }: Props): JSX.Element => {
   return (
     <>
       <div className="flex flex-col flex-1 p-8">
-        <div className="relative flex-shrink-0 w-20 h-20 mx-auto">
-          <Image
-            src={member.photoUrl}
-            className="bg-black rounded-full"
-            layout="fill"
-            objectFit="cover"
-            alt={member.displayName}
-          />
-        </div>
+        <Image
+          height={128}
+          width={128}
+          className="flex-shrink-0 w-32 h-32 mx-auto bg-black rounded-full"
+          src={member.photoUrl}
+          alt=""
+        />
         <h3 className="mt-6 text-sm font-medium text-gray-900">{member.displayName}</h3>
         <dl className="flex flex-col justify-between flex-grow mt-1">
           <dt className="sr-only">Title</dt>
           <dd className="text-sm text-gray-500">{member.submission?.title}</dd>
           <dt className="sr-only">Role</dt>
           <dd className="mt-3">
-            <span className="px-2 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full">
-              test
+            <span className="px-2 py-1 text-xs font-medium text-gray-700 bg-red-200 rounded-full">
+              Member
             </span>
           </dd>
         </dl>
