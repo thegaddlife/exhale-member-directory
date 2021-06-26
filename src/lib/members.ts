@@ -17,7 +17,7 @@ const getAllMembers = async (): Promise<Member[]> => {
         console.error('Error during fetch:', error)
       })
   } else {
-    const pathToJson = path.join(process.cwd(), 'src/lib/members.json')
+    const pathToJson = path.join(process.cwd(), 'src/lib/members-sample.json')
     const data = JSON.parse(fs.readFileSync(pathToJson, 'utf-8'))
     memberGroups = data
   }
