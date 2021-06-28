@@ -1,11 +1,11 @@
 import { postData } from './post'
 import { Member } from '@/interfaces/Member'
-import { __prod__ } from 'src/constants'
+import { __prod__ } from '@/lib/constants'
 import fs from 'fs'
 import path from 'path'
 import { MemberGroup } from '@/interfaces/MemberGroup'
 
-const getAllMembers = async (): Promise<Member[]> => {
+export const getSortedMembers = async (): Promise<Member[]> => {
   let memberGroups: MemberGroup[] = []
   if (__prod__) {
     // get members by calling sync on the azure serverless function
@@ -40,5 +40,3 @@ const getAllMembers = async (): Promise<Member[]> => {
       return 0
     })
 }
-
-export default getAllMembers

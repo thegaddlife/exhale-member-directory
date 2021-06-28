@@ -2,10 +2,10 @@ import React from 'react'
 import { Color } from '@/interfaces/Color'
 import { Icon } from '@/interfaces/Icon'
 import { Member } from '@/interfaces/Member'
-import MemberCard from './MemberCard'
+import { MemberCard } from './member-card'
 
 export default {
-  title: 'Components/MemberCard',
+  title: 'Components/MembersGrid/MemberCard',
   component: MemberCard,
 }
 

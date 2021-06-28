@@ -7,7 +7,7 @@
       "@/interfaces/*": ["src/interfaces/*"],
       "@/pages/*": ["src/pages/*"],
     },
-      
+
     "target": "es5",
     "lib": [
       "dom",
@@ -16,7 +16,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
