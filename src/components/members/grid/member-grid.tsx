@@ -57,9 +57,10 @@ export const MembersGrid = ({ members }: Props): JSX.Element => {
           <select
             id="tabs"
             name="tabs"
+            defaultValue="All Members"
             className="block w-full py-2 pl-3 pr-10 text-base border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
           >
-            <option selected>All Members</option>
+            <option>All Members</option>
             <option>Recently Joined</option>
             <option>Exhale Team</option>
             <option>In my region</option>

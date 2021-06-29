@@ -11,8 +11,8 @@ export const MemberCard = ({ member }: Props): JSX.Element => {
       <div className="block w-full overflow-hidden bg-gray-100 rounded-lg ring-2 ring-offset-2 ring-green-100 group aspect-w-10 aspect-h-7">
         <Image
           src={defaultImg}
-          layout="fill"
-          objectFit="cover"
+          width={1000}
+          height={1000}
           placeholder="blur"
           alt={`View details for ${member.displayName}`}
           className="object-cover pointer-events-none"
