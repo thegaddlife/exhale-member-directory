@@ -8,15 +8,16 @@ type Props = {
 export const MemberCard = ({ member }: Props): JSX.Element => {
   return (
     <>
-      <div className="block w-full overflow-hidden bg-gray-100 rounded-lg ring-2 ring-offset-2 ring-green-100 group aspect-w-10 aspect-h-7">
+      <div className="block w-full overflow-hidden bg-gray-100 rounded-lg group aspect-w-10 aspect-h-7 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500">
         <Image
           src={defaultImg}
-          width={1000}
-          height={1000}
           placeholder="blur"
+          layout="fill"
+          objectFit="cover"
           alt={`View details for ${member.displayName}`}
-          className="object-cover pointer-events-none"
+          className="object-cover pointer-events-none group-hover:opacity-75"
         />
+
         <button type="button" className="absolute inset-0 focus:outline-none">
           <span className="sr-only">View details for {member.displayName}</span>
         </button>
