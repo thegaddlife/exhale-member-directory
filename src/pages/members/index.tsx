@@ -16,7 +16,10 @@ const Index = ({ allMembers }: DirectoryProps): JSX.Element => {
       <Head>
         <title>Exhale Creativity - Member Directory</title>
       </Head>
-      <MembersGrid members={allMembers} />
+
+      <div className="px-4 pt-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <MembersGrid members={allMembers} />
+      </div>
     </Layout>
   )
 }

@@ -1,7 +1,7 @@
 import { __prod__ } from '@/lib/constants'
 import Head from 'next/head'
 
-const Meta = (): JSX.Element => {
+export const Meta = (): JSX.Element => {
   return (
     <Head>
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,8 +15,34 @@ const Meta = (): JSX.Element => {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
+      {__prod__ && (
+        <>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+          var MemberSpace = window.MemberSpace || {subdomain: 'exhalecreativity', domain: 'members.exhalecreativity.com'};
+          (function(d){
+          var s = d.createElement('script');
+          s.src = 'https://cdn.memberspace.com/scripts/widgets.js';
+          var e = d.getElementsByTagName('script')[0];
+          e.parentNode.insertBefore(s,e);
+          }(document));
+                `,
+            }}
+          ></script>
+
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `#__memberspace_modal_protected_page {position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:2147483646;}`,
+            }}
+          ></style>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `if(window.top.location.href.search('.squarespace.com/config') > 0) {document.getElementById("__memberspace_modal_protected_page").style.display = "none";}`,
+            }}
+          ></script>
+        </>
+      )}
     </Head>
   )
 }
-
-export default Meta

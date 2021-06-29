@@ -1,31 +1,25 @@
 import React from 'react'
-import Link from 'next/link'
+import { Header } from './header'
+import { Meta } from './meta'
 
-export const Layout = ({
-  children,
-  home,
-}: {
-  children: React.ReactNode
-  home?: boolean
-}): JSX.Element => {
+export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<meta http-equiv='refresh' content='0; url=https://www.memberspace.com/enable-javascript'`,
-          }}
-        ></noscript>
-        <div id="__memberspace_modal_protected_page"></div>
+      <Meta />
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<meta http-equiv='refresh' content='0; url=https://www.memberspace.com/enable-javascript'`,
+        }}
+      ></noscript>
+      <div id="__memberspace_modal_protected_page"></div>
 
-        <main>{children}</main>
-        {!home && (
-          <div>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
+      <div className="flex h-screen overflow-hidden bg-gray-50">
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <Header />
+          <div className="flex items-stretch flex-1 overflow-hidden">
+            <main className="flex-1 overflow-y-auto">{children}</main>
           </div>
-        )}
+        </div>
       </div>
     </>
   )
