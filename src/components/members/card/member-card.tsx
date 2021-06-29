@@ -13,6 +13,7 @@ export const MemberCard = ({ member }: Props): JSX.Element => {
           src={defaultImg}
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
           alt={`View details for ${member.displayName}`}
           className="object-cover pointer-events-none"
         />
