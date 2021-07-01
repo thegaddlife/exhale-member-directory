@@ -4,7 +4,7 @@ import { Submission } from './Submission'
 export interface Member {
   emailAddress?: string
   memberId?: string
-  photoUrl?: string
+  uniqueId?: string
   displayName?: string
   joined?: string
   joinedString?: string
