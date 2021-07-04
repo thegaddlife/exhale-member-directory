@@ -11,11 +11,11 @@ export const MembersGrid = ({ members }: Props): JSX.Element => {
     <>
       <ul
         role="list"
-        className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8"
+        className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-4 lg:gap-x-56"
       >
         {members.map((member) => (
-          <li key={member.memberId} className="relative">
-            <MemberCard key={member.memberId} member={member} />
+          <li key={member.uniqueId}>
+            <MemberCard key={member.uniqueId} member={member} />
           </li>
         ))}
       </ul>

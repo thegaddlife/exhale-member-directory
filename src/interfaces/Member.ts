@@ -1,19 +1,25 @@
 import { Badge } from './Badge'
-import { Submission } from './Submission'
 
 export interface Member {
-  uniqueId?: string
-  displayName?: string
+  uniqueId: string
+  objectID: string
+  displayName: string
+  title?: string
+  blurb?: string
   joined?: string
   joinedString?: string
-  submission?: Submission
+  city?: string
+  stateProvince?: string
+  country?: string
   lat?: number | null
   lng?: number | null
-  latLng?: string
-  isTeamMember?: boolean
-  isOriginalMember?: boolean
-  gravatarConfirmed?: boolean
+  isTeamMember: boolean
+  isOriginalMember: boolean
+  gravatarConfirmed: boolean
   anniversaryCount?: number
+  insta?: string
+  twitter?: string
+  facebook?: string
+  website?: string
   badges?: Badge[]
-  locationCompareString?: string
 }
