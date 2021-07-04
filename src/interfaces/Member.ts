@@ -2,8 +2,6 @@ import { Badge } from './Badge'
 import { Submission } from './Submission'
 
 export interface Member {
-  emailAddress?: string
-  memberId?: string
   uniqueId?: string
   displayName?: string
   joined?: string
@@ -14,6 +12,7 @@ export interface Member {
   latLng?: string
   isTeamMember?: boolean
   isOriginalMember?: boolean
+  gravatarConfirmed?: boolean
   anniversaryCount?: number
   badges?: Badge[]
   locationCompareString?: string

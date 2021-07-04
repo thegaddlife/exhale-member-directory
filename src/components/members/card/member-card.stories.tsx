@@ -15,10 +15,10 @@ const Template = () => {
       <main className="flex flex-col items-start justify-center flex-1 w-full text-center">
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <li
-            key={sampleMember.memberId}
+            key={sampleMember.uniqueId}
             className="flex flex-col col-span-1 text-center bg-white divide-y divide-gray-200 rounded-lg shadow"
           >
-            <MemberCard key={sampleMember.memberId} member={sampleMember} />
+            <MemberCard key={sampleMember.uniqueId} member={sampleMember} />
           </li>
         </ul>
       </main>
@@ -28,10 +28,7 @@ const Template = () => {
 export const Default = Template.bind({})
 
 const sampleMember: Member = {
-  emailAddress: 'ashlee.gadd@gmail.com',
-  memberId: 'YXNobGVlLmdhZGRAZ21haWwuY29t',
-  photoUrl:
-    'https://secure.gravatar.com/avatar/28b365fd1275318ceb8b7e73581dc8b0?d=https://i.ibb.co/4wLFJvF/exhale-logo.jpg',
+  uniqueId: 'YXNobGVlLmdhZGRAZ21haWwuY29t',
   displayName: 'Ashlee Gadd',
   joined: '2018-03-01T00:00:00',
   joinedString: 'Mar, 18',
@@ -44,12 +41,10 @@ const sampleMember: Member = {
     blurb: 'Wife, mother, founder of Coffee + Crumbs. ',
     insta: 'https://www.instagram.com/ashleegadd/',
     website: 'https://www.ashleegadd.com/',
-    photoUrl: null,
     city: 'Sacramento',
     stateProvince: 'California',
     country: 'United States',
     voxerName: '',
-    useGravatar: true,
   },
   lat: 38.5815719,
   lng: -121.4943996,
@@ -64,5 +59,6 @@ const sampleMember: Member = {
       text: 'C+C Team Member',
     },
   ],
+  gravatarConfirmed: true,
   locationCompareString: 'Sacramento,California,United States',
 }
