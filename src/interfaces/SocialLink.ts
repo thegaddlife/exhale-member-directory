@@ -4,8 +4,7 @@ export interface SocialLink {
 }
 
 export enum LinkType {
-  Team,
-  Founder,
-  Anniversary,
-  Newbie,
+  Instagram = 'Instagram',
+  Website = 'Website',
+  Voxer = 'Voxer',
 }

@@ -13,7 +13,7 @@ export const MembersGrid = ({ members }: Props): JSX.Element => {
         {members.map((member) => (
           <li
             key={member.uniqueId}
-            className="px-6 py-10 text-center bg-gray-800 rounded-lg xl:px-10 xl:text-left"
+            className="px-6 py-10 text-center bg-white rounded-lg dark:bg-exhale-green xl:px-10 xl:text-left"
           >
             <MemberCard key={member.uniqueId} member={member} />
           </li>
