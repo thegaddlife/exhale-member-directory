@@ -6,6 +6,8 @@ export const Meta = (): JSX.Element => {
     <Head>
       <meta name="robots" content="noindex, nofollow" />
 
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
       <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
       <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
       <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
