@@ -39,5 +39,9 @@ export const getStaticProps = async (): Promise<GetStaticPropsResult<DirectoryPr
     x.rnd = Math.floor(Math.random() * (4 - 1 + 1) + 1)
   })
 
+  //TODO: as part of getStaticProps, we could also download everybody's photo
+  //and store it with their uniqueId; this way we don't rely on gravatar for uptime
+  // and we can let nextjs keep a high res copy and deliver the best version
+
   return { props: { allMembers } }
 }
