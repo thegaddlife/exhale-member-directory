@@ -17,8 +17,12 @@ const Index = ({ allMembers }: DirectoryProps): JSX.Element => {
         <title>Exhale Creativity - Member Directory</title>
       </Head>
 
-      <div className="px-4 pt-8 sm:px-6 lg:px-56">
-        <MembersGrid members={allMembers} />
+      <div className="bg-gray-900">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+          <div className="space-y-12">
+            <MembersGrid members={allMembers} />
+          </div>
+        </div>
       </div>
     </Layout>
   )
@@ -30,6 +34,10 @@ export const getStaticProps = async (): Promise<GetStaticPropsResult<DirectoryPr
   // for initial page load, we'll already have the top X members statically generated;
   // on scroll, the additional members will be loaded X members at a time
   const allMembers: Member[] = await getSortedMembers()
+
+  allMembers.map((x) => {
+    x.rnd = Math.floor(Math.random() * (4 - 1 + 1) + 1)
+  })
 
   return { props: { allMembers } }
 }

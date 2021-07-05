@@ -1,8 +1,11 @@
-import { Icon } from './Icon'
-import { Color } from './Color'
-
 export interface Badge {
-  color: Color
-  icon: Icon
-  text: string
+  type: BadgeType
+  anniversaryCount: number
+}
+
+export enum BadgeType {
+  Team,
+  Founder,
+  Anniversary,
+  Newbie,
 }

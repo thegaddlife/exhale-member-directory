@@ -9,12 +9,12 @@ type Props = {
 export const MembersGrid = ({ members }: Props): JSX.Element => {
   return (
     <>
-      <ul
-        role="list"
-        className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-4 lg:gap-x-56"
-      >
+      <ul className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-4 lg:gap-8">
         {members.map((member) => (
-          <li key={member.uniqueId}>
+          <li
+            key={member.uniqueId}
+            className="px-6 py-10 text-center bg-gray-800 rounded-lg xl:px-10 xl:text-left"
+          >
             <MemberCard key={member.uniqueId} member={member} />
           </li>
         ))}

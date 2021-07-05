@@ -1,29 +1,21 @@
-import Image from 'next/image'
-import defaultImg from '@/public/default-img.jpg'
 import { Member } from '@/interfaces/Member'
+import Image from 'next/image'
 
 type Props = {
   member: Member
 }
 
 export const ProfileImage = ({ member }: Props): JSX.Element => {
-  if (member.gravatarConfirmed) {
-    const memberSrc = `https://www.gravatar.com/avatar/${member.uniqueId}?s=200`
-    return (
-      <img
-        src={memberSrc}
-        alt={`View details for ${member.displayName}`}
-        className="object-cover pointer-events-none group-hover:opacity-75"
-      />
-    )
-  }
-  // Otherwise return default image
+  const memberSrc = member.gravatarConfirmed
+    ? `https://www.gravatar.com/avatar/${member.uniqueId}?s=320`
+    : `/default-img-${member.rnd}.jpg`
   return (
-    <img
-      // src={defaultImg}
-      src="/default-img.jpg"
+    <Image
+      src={memberSrc}
+      width={320}
+      height={320}
       alt={`View details for ${member.displayName}`}
-      className="object-cover pointer-events-none group-hover:opacity-75"
+      className="w-40 h-40 mx-auto rounded-full"
     />
   )
 }
