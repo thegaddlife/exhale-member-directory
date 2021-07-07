@@ -10,27 +10,31 @@ type DirectoryProps = {
   data: Member[]
 }
 
+type Filters = {
+  tags: string[]
+}
+
 const Index = ({ data }: DirectoryProps): JSX.Element => {
   const [members, setMembers] = useState<Member[]>([])
-  const [filters, setFilters] = useState([])
+  const [activeFilters, setActiveFilters] = useState([])
   useEffect(() => setMembers(data), [])
 
-  const filterFunc = ({ badges }) => {
-    if (filters.length === 0) {
+  const filterFunc = ({ tags }: Filters): boolean => {
+    if (activeFilters.length === 0) {
       return true
     }
 
-    // start with badges
-    const tags = [...badges]
+    const filters: string[] = []
 
-    // eventually add region and anniversary
-    console.log('badges', badges)
-    console.log('filters', filters)
-    return tags.some((tag) => filters.includes(tag))
+    if (tags) {
+      filters.push(...tags)
+    }
+
+    return filters.some((filter) => activeFilters.includes(filter))
   }
 
-  const handleBadgeClick = (badge) => {
-    setFilters([...filters, badge])
+  const handleFilterClick = (filter) => {
+    setActiveFilters([...activeFilters, filter])
   }
 
   const filteredMembers: Member[] = members.filter(filterFunc)
@@ -45,7 +49,7 @@ const Index = ({ data }: DirectoryProps): JSX.Element => {
           {members.length === 0 ? (
             <p>Fetching members ...</p>
           ) : (
-            <MembersGrid members={filteredMembers} onBadgeClick={handleBadgeClick} />
+            <MembersGrid members={filteredMembers} onFilterClick={handleFilterClick} />
           )}
         </div>
       </div>

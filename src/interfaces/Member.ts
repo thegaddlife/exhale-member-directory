@@ -1,4 +1,3 @@
-import { Badge } from './Badge'
 import { SocialLink } from './SocialLink'
 
 export interface Member {
@@ -18,9 +17,7 @@ export interface Member {
   isOriginalMember: boolean
   gravatarConfirmed: boolean
   anniversaryCount?: number
-
   links?: SocialLink[]
-
-  badges?: Badge[]
+  badges?: string[]
   rnd: number
 }
