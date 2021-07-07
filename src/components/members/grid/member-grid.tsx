@@ -4,21 +4,27 @@ import { Member } from '@/interfaces/Member'
 
 type Props = {
   members: Member[]
+  onBadgeClick: (badge: string) => void
 }
 
-export const MembersGrid = ({ members }: Props): JSX.Element => {
+export const MembersGrid = ({ members, onBadgeClick }: Props): JSX.Element => {
   return (
     <>
-      <ul className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-4 lg:gap-8">
+      <div>
+        <button onClick={() => onBadgeClick('newbie')}>New Members</button>
+        <button onClick={() => onBadgeClick('team')}>Exhale Team</button>
+        <button onClick={() => onBadgeClick('founder')}>Founders</button>
+      </div>
+      <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-4 lg:gap-8">
         {members.map((member) => (
-          <li
+          <div
             key={member.uniqueId}
             className="px-6 py-10 text-center bg-white rounded-lg dark:bg-exhale-green xl:px-10 xl:text-left"
           >
             <MemberCard key={member.uniqueId} member={member} />
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </>
   )
 }

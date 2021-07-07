@@ -15,7 +15,7 @@ export const ProfileImage = ({ member }: Props): JSX.Element => {
       width={320}
       height={320}
       alt={`View details for ${member.displayName}`}
-      className="w-40 h-40 mx-auto rounded-full"
+      className="mx-auto rounded-full"
     />
   )
 }
