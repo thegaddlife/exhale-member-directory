@@ -18,6 +18,6 @@ export interface Member {
   gravatarConfirmed: boolean
   anniversaryCount?: number
   links?: SocialLink[]
-  badges?: string[]
+  tags?: string[]
   rnd: number
 }

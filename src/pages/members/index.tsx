@@ -4,36 +4,35 @@ import Head from 'next/head'
 import { MembersGrid } from '@/components/members/grid/member-grid'
 import { Member } from '@/interfaces/Member'
 import { getSortedMembers } from '@/lib/members'
-import { Layout } from '@/components/layout/layout'
+import { Layout } from '@/components/layout/Layout'
 
 type DirectoryProps = {
   data: Member[]
 }
 
-type Filters = {
-  tags: string[]
-}
-
 const Index = ({ data }: DirectoryProps): JSX.Element => {
   const [members, setMembers] = useState<Member[]>([])
-  const [activeFilters, setActiveFilters] = useState([])
-  useEffect(() => setMembers(data), [])
+  const [activeFilters, setActiveFilters] = useState<string[]>([])
 
-  const filterFunc = ({ tags }: Filters): boolean => {
+  useEffect(() => setMembers(data), [data])
+
+  const filterFunc = ({ tags }: Member): boolean => {
+    // does this member have tags for all of the active filters?
+
     if (activeFilters.length === 0) {
       return true
     }
 
-    const filters: string[] = []
-
-    if (tags) {
-      filters.push(...tags)
-    }
-
-    return filters.some((filter) => activeFilters.includes(filter))
+    return activeFilters.every((f) => tags?.includes(f))
   }
 
-  const handleFilterClick = (filter) => {
+  const handleActiveFilterClick = (filter: string): void => {
+    console.log('deactivate', filter)
+    setActiveFilters(activeFilters.filter((f) => f !== filter))
+  }
+
+  const handleInactiveFilterClick = (filter: string): void => {
+    console.log('activate', filter)
     setActiveFilters([...activeFilters, filter])
   }
 
@@ -49,7 +48,12 @@ const Index = ({ data }: DirectoryProps): JSX.Element => {
           {members.length === 0 ? (
             <p>Fetching members ...</p>
           ) : (
-            <MembersGrid members={filteredMembers} onFilterClick={handleFilterClick} />
+            <MembersGrid
+              members={filteredMembers}
+              activeFilters={activeFilters}
+              onActiveFilterClick={handleActiveFilterClick}
+              onInactiveFilterClick={handleInactiveFilterClick}
+            />
           )}
         </div>
       </div>
