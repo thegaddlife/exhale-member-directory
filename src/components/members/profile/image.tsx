@@ -8,7 +8,7 @@ type Props = {
 export const ProfileImage = ({ member }: Props): JSX.Element => {
   const memberSrc = member.gravatarConfirmed
     ? `https://www.gravatar.com/avatar/${member.uniqueId}?s=320`
-    : `/default-img-${member.rnd}.jpg`
+    : `/default-img/default-img-${member.rnd}.jpg`
   return (
     <Image
       src={memberSrc}

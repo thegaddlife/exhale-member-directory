@@ -69,7 +69,7 @@ export const getStaticProps = async (): Promise<GetStaticPropsResult<DirectoryPr
   const data: Member[] = await getSortedMembers()
 
   data.map((x) => {
-    x.rnd = Math.floor(Math.random() * (4 - 1 + 1) + 1)
+    x.rnd = Math.floor(Math.random() * (14 - 1 + 1) + 1)
   })
 
   //TODO: as part of getStaticProps, we could also download everybody's photo
