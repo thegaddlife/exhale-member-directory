@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { MembersGrid } from '@/components/members/grid/member-grid'
 import { Member } from '@/interfaces/Member'
 import { getSortedMembers } from '@/lib/members'
-import { Layout } from '@/components/layout/Layout'
+import { Layout } from '@/components/layout/layout'
 
 type DirectoryProps = {
   data: Member[]
