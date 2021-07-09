@@ -4,34 +4,23 @@ import { Member } from '@/interfaces/Member'
 
 type Props = {
   members: Member[]
-  onActiveFilterClick: (filter: string) => void
-  onInactiveFilterClick: (filter: string) => void
+  onFilterClick: (filter: string, activated: boolean) => void
   activeFilters: string[]
 }
 
-export const MembersGrid = ({
-  members,
-  onActiveFilterClick,
-  onInactiveFilterClick,
-  activeFilters,
-}: Props): JSX.Element => {
+export const MembersGrid = ({ members, onFilterClick, activeFilters }: Props): JSX.Element => {
   const filters = ['team', 'newbie', 'founder']
-  const inActiveFilters = filters.filter((e) => !activeFilters.includes(e))
+  console.log(activeFilters)
 
   return (
     <>
       <div>
-        <h3>Inactive Filters ({inActiveFilters.length})</h3>
-        {inActiveFilters.map((x) => (
-          <button key={x} onClick={() => onInactiveFilterClick(x)}>
-            {x}
-          </button>
-        ))}
-      </div>
-      <div>
-        <h3>Active Filters ({activeFilters.length})</h3>
-        {activeFilters.map((x) => (
-          <button key={x} onClick={() => onActiveFilterClick(x)}>
+        {filters.map((x) => (
+          <button
+            key={x}
+            onClick={() => onFilterClick(x, activeFilters.includes(x) === false)}
+            className={`${activeFilters.includes(x) ? 'button-filter-on' : 'button-filter-off'}`}
+          >
             {x}
           </button>
         ))}

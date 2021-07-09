@@ -13,7 +13,7 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/members',
+        destination: '/directory',
         permanent: false,
       },
     ]

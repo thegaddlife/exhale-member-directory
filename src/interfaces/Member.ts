@@ -21,3 +21,11 @@ export interface Member {
   tags?: string[]
   rnd: number
 }
+
+export interface MemberSpaceMember {
+  id?: number
+  name?: string
+  firstName?: string
+  lastName?: string
+  email?: string
+}

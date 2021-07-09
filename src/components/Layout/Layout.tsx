@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Meta } from './meta'
+import { Header } from '@/components/layout/header'
+import { MemberSpaceMember } from '@/interfaces/Member'
 
 export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
+  const [user, setUser] = useState<MemberSpaceMember>({})
+
+  useEffect(() => {
+    setUser(window.member)
+  }, [user])
+
+  const handleSearch = (input: string): void => {
+    console.log('search', input)
+  }
+
   return (
     <>
       <Meta />
@@ -12,7 +24,7 @@ export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element
       ></noscript>
       <div id="__memberspace_modal_protected_page"></div>
 
-      {/* <ThemeChanger /> */}
+      <Header onSearch={handleSearch} loggedInUser={user} />
       <main className="bg-gray-200 dark:bg-exhale-green-dark">{children}</main>
     </>
   )
