@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { MemberCard } from '@/components/members/card/member-card'
 import { Member } from '@/interfaces/Member'
 
@@ -11,6 +11,44 @@ type Props = {
 export const MembersGrid = ({ members, onFilterClick, activeFilters }: Props): JSX.Element => {
   const filters = ['team', 'newbie', 'founder']
   console.log(activeFilters)
+
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    let counter = count
+    const interval = setInterval(() => {
+      if (counter >= 12) {
+        //members.length) {
+        clearInterval(interval)
+      } else {
+        setCount((count) => count + 1)
+        counter++ // local variable that this closure will see
+      }
+    }, 50)
+    return () => clearInterval(interval)
+  }, [members])
+
+  const animateMembersList = members.slice(0, count).map((member, index) => {
+    return (
+      <div
+        key={member.uniqueId}
+        className="px-6 py-10 text-center bg-white rounded-lg dark:bg-exhale-green xl:px-10 xl:text-left animate-fade-in-down"
+      >
+        <MemberCard key={member.uniqueId} member={member} />
+      </div>
+    )
+  })
+
+  const remainingMembers = members.slice(12).map((member, index) => {
+    return (
+      <div
+        key={member.uniqueId}
+        className="px-6 py-10 text-center bg-white rounded-lg dark:bg-exhale-green xl:px-10 xl:text-left animate-fade-in-down"
+      >
+        <MemberCard key={member.uniqueId} member={member} />
+      </div>
+    )
+  })
 
   return (
     <>
@@ -26,14 +64,8 @@ export const MembersGrid = ({ members, onFilterClick, activeFilters }: Props): J
         ))}
       </div>
       <div className="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-4 lg:gap-8">
-        {members.map((member) => (
-          <div
-            key={member.uniqueId}
-            className="px-6 py-10 text-center bg-white rounded-lg dark:bg-exhale-green xl:px-10 xl:text-left"
-          >
-            <MemberCard key={member.uniqueId} member={member} />
-          </div>
-        ))}
+        {animateMembersList}
+        {remainingMembers}
       </div>
     </>
   )

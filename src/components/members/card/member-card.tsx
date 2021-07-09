@@ -8,6 +8,7 @@ type Props = {
 export const MemberCard = ({ member }: Props): JSX.Element => {
   return (
     <>
+      {/* TODO: fade this in only if it's currently visible; within x pixels of screen */}
       <div className="space-y-6 xl:space-y-10">
         <ProfileImage member={member} />
         <div className="space-y-2 xl:flex xl:items-center xl:justify-between">

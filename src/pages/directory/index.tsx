@@ -41,7 +41,7 @@ const Index = ({ data }: DirectoryProps): JSX.Element => {
   return (
     <Layout>
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
-        <div className="space-y-12">
+        <div className="min-h-screen space-y-12">
           <MembersGrid
             members={filteredMembers}
             activeFilters={activeFilters}
