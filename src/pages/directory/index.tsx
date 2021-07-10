@@ -12,28 +12,53 @@ type DirectoryProps = {
 const Index = ({ data }: DirectoryProps): JSX.Element => {
   const [members, setMembers] = useState<Member[]>([])
   const [activeFilters, setActiveFilters] = useState<string[]>([])
+  const [queryString, setQueryString] = useState<string>()
 
   useEffect(() => {
     setMembers(data)
   }, [data])
 
-  const filterFunc = ({ tags }: Member): boolean => {
-    if (activeFilters.length === 0) {
+  const filterFunc = ({ tags, displayName }: Member): boolean => {
+    if (activeFilters.length === 0 && (!queryString || queryString.length === 0)) {
       return true
     }
 
     // does this member have tags for all of the active filters?
-    return activeFilters.every((f) => tags?.includes(f))
+    // and does the member match the given text: name, title, location
+
+    // tag filtering
+    if (activeFilters && activeFilters.every((f) => tags?.includes(f)) === false) {
+      return false
+    }
+
+    // query filtering
+    if (queryString) {
+      //TODO: add location, title, maybe blurb
+      // alternatively, switch over to algolia search
+
+      // if it's just one letter, return all names that start with it
+      if (queryString.length === 1) {
+        const firstLetter = displayName.charAt(0).toLowerCase()
+        return firstLetter === queryString
+      } else {
+        return displayName.toLowerCase().includes(queryString)
+      }
+    }
+
+    return true
   }
 
   const handleFilterClick = (filter: string, activate: boolean): void => {
-    console.log('filter', filter)
-    console.log('activate', activate)
+    console.log('handle filter')
     if (activate) {
       setActiveFilters([...activeFilters, filter])
     } else {
       setActiveFilters(activeFilters.filter((f) => f !== filter))
     }
+  }
+
+  const handleQuery = (query: string): void => {
+    setQueryString(query.toLowerCase())
   }
 
   const filteredMembers: Member[] = members.filter(filterFunc)
@@ -46,6 +71,7 @@ const Index = ({ data }: DirectoryProps): JSX.Element => {
             members={filteredMembers}
             activeFilters={activeFilters}
             onFilterClick={handleFilterClick}
+            onQuery={handleQuery}
           />
         </div>
       </div>
