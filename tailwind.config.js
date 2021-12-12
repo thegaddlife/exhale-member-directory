@@ -1,8 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
@@ -48,8 +47,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  //plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
 }

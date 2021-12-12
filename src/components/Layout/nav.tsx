@@ -36,7 +36,7 @@ export const Nav = ({ user }: Props): JSX.Element => {
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex">
-                  <div className="flex items-center flex-shrink-0">
+                  <div className="flex items-center shrink-0">
                     <img
                       className="block w-auto h-8 lg:hidden"
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
@@ -90,11 +90,11 @@ export const Nav = ({ user }: Props): JSX.Element => {
                           show={open}
                           as={Fragment}
                           enter="transition ease-out duration-200"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
                           leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
                         >
                           <Menu.Items
                             static
@@ -155,7 +155,7 @@ export const Nav = ({ user }: Props): JSX.Element => {
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200">
                 <div className="flex items-center px-4">
-                  <div className="flex-shrink-0">
+                  <div className="shrink-0">
                     <img
                       className="w-10 h-10 rounded-full"
                       src={`https://www.gravatar.com/avatar/${user?.id}?s=320`}
@@ -166,7 +166,7 @@ export const Nav = ({ user }: Props): JSX.Element => {
                     <div className="text-base font-medium text-gray-800">{user.name}</div>
                     <div className="text-sm font-medium text-gray-500">{user.email}</div>
                   </div>
-                  <button className="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button className="p-1 ml-auto text-gray-400 bg-white rounded-full shrink-0 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="w-6 h-6" aria-hidden="true" />
                   </button>
