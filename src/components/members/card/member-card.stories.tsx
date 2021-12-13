@@ -1,11 +1,13 @@
-import React from 'react'
-import { Member } from '@/interfaces/Member'
-import { MemberCard } from './member-card'
+import React from "react";
+import { Member } from "@/interfaces/Member";
+import { MemberCard } from "./member-card";
 
-export default {
-  title: 'Components/MembersGrid/MemberCard',
+const settings = {
+  title: "Components/MembersGrid/MemberCard",
   component: MemberCard,
-}
+};
+
+export default settings;
 
 const Template = (): JSX.Element => {
   return (
@@ -21,21 +23,21 @@ const Template = (): JSX.Element => {
         </ul>
       </main>
     </div>
-  )
-}
-export const Default = Template.bind({})
+  );
+};
+export const Default = Template.bind({});
 
 const sampleMember: Member = {
-  uniqueId: 'YXNobGVlLmdhZGRAZ21haWwuY29t',
-  objectID: 'YXNobGVlLmdhZGRAZ21haWwuY29t',
+  uniqueId: "YXNobGVlLmdhZGRAZ21haWwuY29t",
+  objectID: "YXNobGVlLmdhZGRAZ21haWwuY29t",
   rnd: 1,
-  displayName: 'Ashlee Gadd',
-  joined: '2018-03-01T00:00:00',
-  joinedString: 'Mar, 18',
+  displayName: "Ashlee Gadd",
+  joined: "2018-03-01T00:00:00",
+  joinedString: "Mar, 18",
   lat: 38.5815719,
   lng: -121.4943996,
   isTeamMember: true,
   isOriginalMember: true,
   anniversaryCount: 3,
   gravatarConfirmed: true,
-}
+};
